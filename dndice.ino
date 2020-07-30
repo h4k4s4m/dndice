@@ -26,8 +26,9 @@ int dice[] = {2, 4, 6, 8, 10, 12, 20};
 int selectedDice = 0;
 int selectedQuantity = 1;
 int currentMenu = 0;
-bool rolling = false;
-bool justSwitched = true;
+int generatedNumber = 0;
+int rolling = 0;
+int shake = 0;
 unsigned long rtimestamp = millis();
 
 int del = 0; //Set del as 5; the value is the degree of fine tuning for the clock
@@ -35,7 +36,6 @@ int del = 0; //Set del as 5; the value is the degree of fine tuning for the cloc
 void setup()
 {
   //set all the pins of the LED display as output
-  Serial.begin(9600);
   pinMode(d1, OUTPUT);
   pinMode(d2, OUTPUT);
   pinMode(d3, OUTPUT);
@@ -67,11 +67,11 @@ void menu()
   default:
     break;
   case 0:
-    rolling = false;
+    rolling = 0;
     selectQuantity();
     break;
   case 1:
-    rolling = false;
+    rolling = 0;
     selectDice();
     break;
   case 2:
@@ -101,84 +101,48 @@ void menu()
   }
 }
 
-// void roll()
-// {
-
-//   // digits[0] = -1;
-//   // digits[1] = -1;
-//   // digits[2] = selectedQuantity;
-//   // digits[3] = 12;
-//   if (!rolling)
-//   {
-//     digits[0] = 12;
-//     digits[1] = 13;
-//     digits[2] = 14;
-//     digits[3] = 14;
-//   }
-//   else {
-    
-//       digits[0] = -1;
-//       digits[1] = -1;
-//       digits[2] = -1;
-//       digits[3] = -1;
-//   }
-
-//   int x = digitalRead(s3);
-//   if (buttonPrevState4 == x)
-//   {
-//     return;
-//   }
-//   else
-//   {
-//     buttonPrevState4 = x;
-//     Serial.println(millis());
-//     Serial.println(rtimestamp);
-//     Serial.println(millis()-rtimestamp);
-//     if (millis() - rtimestamp < 2000)
-//     {
-//       rtimestamp = millis();
-//       rolling = true;
-//     }
-//     else
-//     {
-//       rolling = true;
-      
-//     }
-//   }
-// }
-
-
 void roll()
 {
-   int x = digitalRead(s3);
-    if (justSwitched)
+  switch (rolling)
   {
+  default:
+    break;
+  case 0:
     digits[0] = 12;
     digits[1] = 13;
     digits[2] = 14;
     digits[3] = 14;
-    justSwitched=!justSwitched;
-  }else{
-      if(millis()-rtimestamp > 2000){
-    rolling = false;
+    break;
+  case 1:
     digits[0] = -1;
     digits[1] = -1;
     digits[2] = -1;
     digits[3] = -1;
+    break;
+  case 2:
+    digits[0] = generatedNumber/1000;
+    digits[1] = (generatedNumber/100)%10;
+    digits[2] = (generatedNumber/10)%10;
+    digits[3] = generatedNumber%10;
+    break;
   }
 
-  if(x != buttonPrevState4){
-    buttonPrevState4 = x;
-    Serial.println(millis() - rtimestamp);
-    if(millis()-rtimestamp < 2000){
-      rolling = true;
-    }
+  int x = digitalRead(s3);
+  if(x == 1){
+    if(millis() - rtimestamp < 1000 & shake > 1000){
+      rolling = 1;
+      generatedNumber = generateNumber(dice[selectedDice],selectedQuantity);
+    };
     rtimestamp = millis();
+    shake+=1;
+  } else {
+    if(millis() - rtimestamp > 3000 & rtimestamp != 0){
+      rolling = 2;
+      shake = 0;
+    }
   }
-
-
-
 }
+
 void selectQuantity()
 {
   digits[0] = -1;
@@ -187,7 +151,7 @@ void selectQuantity()
   digits[3] = 10;
 
   int x = digitalRead(s1);
-  if (4 == x)
+  if (buttonPrevState3 == x)
   {
     return;
   }
@@ -539,4 +503,12 @@ void L() //the 7-segment led display d
   digitalWrite(f, LOW);
   digitalWrite(g, LOW);
   digitalWrite(p, LOW);
+}
+
+int generateNumber(int type, int quantity){
+  int x=0;
+  for (int i=0; i<quantity; i++){
+    x += random(1,(type+1));
+  }
+  return x;
 }
