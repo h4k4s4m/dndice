@@ -1,3 +1,4 @@
+//Pins are set depending on wiring, this is a straight connection configuration without a shift register
 int a = 2;
 int b = 3;
 int c = 4;

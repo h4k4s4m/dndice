@@ -1,4 +1,5 @@
-void clearLEDs() //clear the 7-segment display screen
+//clear the 7-segment display screen
+void clearLEDs()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, LOW);
@@ -10,7 +11,8 @@ void clearLEDs() //clear the 7-segment display screen
   digitalWrite(p, LOW);
 }
 
-void zero() //the 7-segment led display 0
+//the 7-segment led display 0
+void zero()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -21,7 +23,8 @@ void zero() //the 7-segment led display 0
   digitalWrite(g, LOW);
 }
 
-void one() //the 7-segment led display 1
+//the 7-segment led display 1
+void one()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, HIGH);
@@ -32,7 +35,8 @@ void one() //the 7-segment led display 1
   digitalWrite(g, LOW);
 }
 
-void two() //the 7-segment led display 2
+//the 7-segment led display 2
+void two()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -43,7 +47,8 @@ void two() //the 7-segment led display 2
   digitalWrite(g, HIGH);
 }
 
-void three() //the 7-segment led display 3
+//the 7-segment led display 3
+void three()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -54,7 +59,8 @@ void three() //the 7-segment led display 3
   digitalWrite(g, HIGH);
 }
 
-void four() //the 7-segment led display 4
+//the 7-segment led display 4
+void four()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, HIGH);
@@ -65,7 +71,8 @@ void four() //the 7-segment led display 4
   digitalWrite(g, HIGH);
 }
 
-void five() //the 7-segment led display 5
+//the 7-segment led display 5
+void five()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, LOW);
@@ -76,7 +83,8 @@ void five() //the 7-segment led display 5
   digitalWrite(g, HIGH);
 }
 
-void six() //the 7-segment led display 6
+//the 7-segment led display 6
+void six()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, LOW);
@@ -87,7 +95,8 @@ void six() //the 7-segment led display 6
   digitalWrite(g, HIGH);
 }
 
-void seven() //the 7-segment led display 7
+//the 7-segment led display 7
+void seven()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -98,7 +107,8 @@ void seven() //the 7-segment led display 7
   digitalWrite(g, LOW);
 }
 
-void eight() //the 7-segment led display 8
+//the 7-segment led display 8
+void eight()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -109,7 +119,8 @@ void eight() //the 7-segment led display 8
   digitalWrite(g, HIGH);
 }
 
-void nine() //the 7-segment led display 9
+//the 7-segment led display 9
+void nine()
 {
   digitalWrite(a, HIGH);
   digitalWrite(b, HIGH);
@@ -120,7 +131,8 @@ void nine() //the 7-segment led display 9
   digitalWrite(g, HIGH);
 }
 
-void D() //the 7-segment led display d
+//the 7-segment led display D
+void D()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, HIGH);
@@ -132,7 +144,8 @@ void D() //the 7-segment led display d
   digitalWrite(p, HIGH);
 }
 
-void R() //the 7-segment led display d
+//the 7-segment led display R
+void R()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, LOW);
@@ -144,7 +157,8 @@ void R() //the 7-segment led display d
   digitalWrite(p, LOW);
 }
 
-void O() //the 7-segment led display d
+//the 7-segment led display O
+void O()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, LOW);
@@ -156,7 +170,8 @@ void O() //the 7-segment led display d
   digitalWrite(p, LOW);
 }
 
-void L() //the 7-segment led display d
+//the 7-segment led display L
+void L()
 {
   digitalWrite(a, LOW);
   digitalWrite(b, LOW);
