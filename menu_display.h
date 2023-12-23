@@ -41,7 +41,7 @@ void roll()
   //read tilt switch
   int x = digitalRead(s3);
   //if in non default position
-  if(x == 1){
+  if(x == 0){
     //check if there has been enough shakes quick enough, start generating numbers with each shake
     if(millis() - rtimestamp < 1000 & shake > 1000){
       //turn off the display  
@@ -55,7 +55,7 @@ void roll()
     shake+=1;
   } else {
     //when in default position check if the last time there was a shake was atleast 3 seconds ago AND that there was atleast one shake before...
-    if(millis() - rtimestamp > 3000 & rtimestamp != 0){
+    if(millis() - rtimestamp > 1500 & rtimestamp != 0){
       //set mode to show result of generatedNumber
       rolling = 2;
       //reset shake meter so next roll takes some movement (so you can pick up the dice and read the result without clearing it)
